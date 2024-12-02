@@ -1,7 +1,6 @@
 spring:
   datasource:
     url: jdbc:h2:tcp//localhost/~/jpashop;MVCC=TRUE
-    username: sa
     password:
     driver-class-name: org.h2.Driver
 
@@ -10,9 +9,10 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-#        show_sql: true
-        format_sql: true
+#       show_sql: true
+        "[format_sql]": true
+        dialect: org.hibernate.dialect.H2Dialect
 
 logging:
   level:
-    org.hibernate.SQL: debug
+    "[org.hibernate.SQL]": debug
