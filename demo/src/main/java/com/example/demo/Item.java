@@ -1,4 +1,7 @@
-package domain;
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
@@ -7,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +28,7 @@ public abstract class Item {
 	private String name;
 	private int price;
 	private int stockQuantity;
+	
+	@ManyToMany(mappedBy = "items")
+	private List<Category> categories = new ArrayList<>();
 }
