@@ -3,16 +3,20 @@ package com.example.demo;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class MemberService {
 
-	@Autowired
-	private MemberRepository memberRepository;
+	private final MemberRepository memberRepository;
 	
 	// 회원가입
+	@Transactional
 	public long join(Member member){
 		
 		validateDuplicateMember(member); // 중복회원 검증
